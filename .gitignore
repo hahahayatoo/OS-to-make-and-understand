@@ -1,3 +1,5 @@
 /prog/src/*/*.lst
+/prog/src/*/*.bin
 /prog/src/*/*.img
+/prog/src/*/dev.bat
 /prog/tools/nasm*
