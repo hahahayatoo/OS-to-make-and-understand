@@ -33,7 +33,7 @@ itoa:
         add     edi, ecx                        ; dst = &dst[size - 1];
         dec     edi                             ;
 
-        mov     ebx, word [ebp + 24]            ; flag = オプション;
+        mov     ebx, [ebp + 24]                 ; flag = オプション;
 
         ;---------------------------------------
         ; 符号つき判定
