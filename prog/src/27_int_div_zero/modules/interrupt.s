@@ -100,3 +100,13 @@ int_default:
         iret
 
 .s0     db "<     STOP     >", 0
+
+int_zero_div:
+        pushf                                   ; EFLAGS
+        push    cs                              ; CS
+        push    int_stop                        ; スタック表示処理
+
+        mov     eax, .s0                        ; 割り込み種別
+        iret
+
+.s0     db "<   ZERO DIV   >", 0
