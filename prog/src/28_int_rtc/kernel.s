@@ -25,7 +25,7 @@ kernel:
         cdecl   init_pic
 
         set_vect        0x00, int_zero_div      ; 割り込み処理の登録（ゼロ除算）
-        set_vect        0x28, int_rtc           ; 割り込み処理の登録（ゼロ除算）
+        set_vect        0x28, int_rtc           ; 割り込み処理の登録（RTC）
 
         ;---------------------------------------
         ; デバイスの割り込み許可
