@@ -33,6 +33,7 @@ kernel:
         ; デバイスの割り込み許可
         ;---------------------------------------
         cdecl   rtc_int_en, 0x10                ; rtc_int_en(UIE) 更新サイクル終了割り込み許可
+        cdecl   int_en_timer0                   ; タイマー割り込み許可
 
         ;---------------------------------------
         ; IMR（割り込みマスクレジスタ）の設定
@@ -114,6 +115,7 @@ RTC_TIME:       dd 0
 %include        "../modules/protect/ring_buff.s"
 %include        "./modules/int_timer.s"
 %include        "../modules/protect/draw_rotation_bar.s"
+%include        "../modules/protect/timer.s"
 
 ;******************************************************************
 ; パディング
