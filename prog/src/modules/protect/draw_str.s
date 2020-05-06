@@ -38,7 +38,11 @@ draw_str:
         cmp     al, 0                           ; 文字列の終端（0）か確認
         je      .10E
 
+%ifdef  USE_SYSTEM_CALL
+        int     0x81
+%else
         cdecl   draw_char, ecx, edx, ebx, eax
+%endif
 
         inc     ecx                             ; 次の表示列算出する。
         cmp     ecx, 80                         ; 次の表示列が80文字以上かを確認して
