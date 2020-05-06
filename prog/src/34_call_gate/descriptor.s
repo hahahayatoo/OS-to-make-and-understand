@@ -66,6 +66,7 @@ GDT:            dq  0x0000000000000000                              ; NULL
 .ldt            dq  0x0000820000000000                              ; LDTディスクリプタ
 .tss_0:         dq  0x0000890000000067                              ; TSSディスクリプタ
 .tss_1:         dq  0x0000890000000067                              ; TSSディスクリプタ
+.call_gate:     dq  0x0000EC0400080000                              ; 386コールゲート（DPL=3, count=4, SEL=8）
 .end:
 
 CS_KERNEL       equ .cs_kernel - GDT
@@ -73,6 +74,7 @@ DS_KERNEL       equ .ds_kernel - GDT
 SS_LDT          equ .ldt - GDT
 SS_TASK_0       equ .tss_0 - GDT
 SS_TASK_1       equ .tss_1 - GDT
+SS_GATE_0       equ .call_gate - GDT
 
 GDTR:           dw  GDT.end - GDT - 1
                 dd  GDT

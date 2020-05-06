@@ -25,6 +25,12 @@ kernel:
         set_desc        GDT.tss_1, TSS_1        ; タスク0用TSSの設定
 
         ;---------------------------------------
+        ; コールゲートの設定
+        ;---------------------------------------
+        set_gate        GDT.call_gate, call_gate
+                                                ; コールゲートの設定
+
+        ;---------------------------------------
         ; LDTの設定
         ;---------------------------------------
         set_desc        GDT.ldt, LDT, word LDT_LIMIT
@@ -143,6 +149,7 @@ RTC_TIME:       dd 0
 %include        "../modules/protect/ring_buff.s"
 %include        "../modules/protect/draw_rotation_bar.s"
 %include        "../modules/protect/timer.s"
+%include        "../modules/protect/call_gate.s"
 
 ;******************************************************************
 ; パディング
