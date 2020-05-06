@@ -13,3 +13,11 @@
 
         BOOT_SECT           equ     (BOOT_SIZE / SECT_SIZE) ; ブートプログラムのセクタ数
         KERNEL_SECT         equ     (KERNEL_SIZE / SECT_SIZE)
+
+        STACK_BASE          equ     0x0010_3000             ; タスク用スタックエリア
+        STACK_SIZE          equ     1024                    ; スタックサイズ
+
+        SP_TASK_0           equ     STACK_BASE + (STACK_SIZE * 1)
+                                                            ; タスク0のスタックポインタの初期値
+        SP_TASK_1           equ     STACK_BASE + (STACK_SIZE * 2)
+                                                            ; タスク1のスタックポインタの初期値
