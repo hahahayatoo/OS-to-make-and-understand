@@ -21,6 +21,13 @@ draw_char:
         push    edi
 
         ;---------------------------------------
+        ; テスト&セット
+        ;---------------------------------------
+%ifdef  USE_TEST_AND_SET
+        cdecl   test_and_set, IN_USE
+%endif
+
+        ;---------------------------------------
         ; コピー元フォントアドレスを設定
         ;---------------------------------------
         movzx   esi, byte [ebp + 20]            ; CL = 文字コード
@@ -59,6 +66,13 @@ draw_char:
         cdecl   vram_font_copy, esi, edi, 0x01, ebx
 
         ;---------------------------------------
+        ; IN_USEの解放
+        ;---------------------------------------
+%ifdef  USE_TEST_AND_SET
+        mov     [IN_USE], dword 0               ; TEST_AND_SET(IN_USE) リソースの空き待ち
+%endif
+
+        ;---------------------------------------
         ; 【レジスタの復帰】
         ;---------------------------------------
          pop    edi
@@ -75,3 +89,8 @@ draw_char:
         pop     ebp
 
         ret
+
+%ifdef  USE_TEST_AND_SET
+ALIGN 4, db 0
+IN_USE: dd 0
+%endif
