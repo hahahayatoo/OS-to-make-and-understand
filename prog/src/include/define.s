@@ -23,3 +23,5 @@
                                                             ; タスク1のスタックポインタの初期値
         SP_TASK_2           equ     STACK_BASE + (STACK_SIZE * 3)
                                                             ; タスク2のスタックポインタの初期値
+        SP_TASK_3           equ     STACK_BASE + (STACK_SIZE * 4)
+                                                            ; タスク3のスタックポインタの初期値
