@@ -109,3 +109,25 @@ struc ring_buff
     .wp     resd    1               ; WP:読み込み位置
     .item   resd    RING_ITEM_SIZE  ; バッファ
 endstruc
+
+;-----------------------------------------------
+; バラ曲線
+;-----------------------------------------------
+struc rose
+    .x0         resd    1           ; 左上座標: X0
+    .y0         resd    1           ; 左上座標: Y0
+    .x1         resd    1           ; 右下座標: X1
+    .y1         resd    1           ; 右下座標: Y1
+
+    .n          resd    1           ; 変数: n
+    .d          resd    1           ; 変数: d
+
+    .color_x    resd    1           ; 描画色: X軸
+    .color_y    resd    1           ; 描画色: Y軸
+    .color_z    resd    1           ; 描画色: 枠
+    .color_s    resd    1           ; 描画色: 文字
+    .color_f    resd    1           ; 描画色: グラフ描画色
+    .color_b    resd    1           ; 描画色: グラフ消去色
+
+    .title      resb    16          ; タイトル
+endstruc

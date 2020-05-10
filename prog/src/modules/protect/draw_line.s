@@ -108,9 +108,20 @@ draw_line:
         ; 線を描画する
         ;---------------------------------------
 .50L:
+%ifdef  USE_SYSTEM_CALL
+        mov     eax, ecx                        ; 繰り返し回数を保存
+
+        mov     ebx, [ebp + 24]                 ; EBX = 表示色
+        mov     ecx, [ebp - 8]                  ; ECX = X座標
+        mov     edx, [ebp - 20]                 ; EDX = Y座標
+        int     0x82
+
+        mov     ecx, eax
+%else
         cdecl   draw_pixel, dword [ebp - 8], \
                             dword [ebp - 20], \
                             dword [ebp + 24]    ; 点の描画
+%endif
 
         mov     eax, [esi - 8]                  ; 基準軸を更新（1ドット分）
         add     [esi - 0], eax                  ; 基準軸増分は 1 or -1
