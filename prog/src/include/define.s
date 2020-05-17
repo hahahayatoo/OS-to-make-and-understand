@@ -53,7 +53,7 @@
         FAT1_START          equ     (KERNEL_SIZE)
         FAT2_START          equ     (FAT1_START + FAT_SIZE)
         ROOT_START          equ     (FAT2_START + FAT_SIZE)
-        FILE_START          equ     (ROOT_START + FAT_SIZE)
+        FILE_START          equ     (ROOT_START + ROOT_SIZE)
 
         ATTR_VOLUME_ID      equ     0x08                    ; FAT ディレクトリエントリの属性（ボリュームラベル）
         ATTR_ARCHIVE        equ     0x20                    ; FAT ディレクトリエントリの属性（アーカイブ）
