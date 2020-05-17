@@ -43,3 +43,17 @@
         CR3_TASK_4          equ     0x0020_0000             ; ページ変換テーブル：タスク4用
         CR3_TASK_5          equ     0x0020_2000             ; ページ変換テーブル：タスク5用
         CR3_TASK_6          equ     0x0020_4000             ; ページ変換テーブル：タスク6用
+
+        FAT_SIZE            equ     (1024 * 128)            ; FAT-1/2
+        ROOT_SIZE           equ     (1024 * 16)             ; ルートディレクトリ領域
+
+        ENTRY_SIZE          equ     32                      ; エントリサイズ
+
+        FAT_OFFSET          equ     (BOOT_SIZE + KERNEL_SIZE)
+        FAT1_START          equ     (KERNEL_SIZE)
+        FAT2_START          equ     (FAT1_START + FAT_SIZE)
+        ROOT_START          equ     (FAT2_START + FAT_SIZE)
+        FILE_START          equ     (ROOT_START + FAT_SIZE)
+
+        ATTR_VOLUME_ID      equ     0x08                    ; FAT ディレクトリエントリの属性（ボリュームラベル）
+        ATTR_ARCHIVE        equ     0x20                    ; FAT ディレクトリエントリの属性（アーカイブ）
